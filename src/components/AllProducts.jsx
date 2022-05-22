@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Link} from "react-router-dom";
 
-const AllProducts = () => {
+const AllProducts = (props) => {
 
     const [allProductManagers, setAllProductManagers] = useState([])
     
@@ -18,7 +18,7 @@ const AllProducts = () => {
                 console.log("errrrr", err)
             })
 
-    }, [deleteToggle])
+    }, [deleteToggle, props.newProductToggle])
     
     const deleteProduct = (id)=>{
         console.log("deleting a Product with this id-->", id)

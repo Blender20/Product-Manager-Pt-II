@@ -1,4 +1,4 @@
-
+import React, {useState} from 'react';
 import './App.css';
 import {
   BrowserRouter,
@@ -12,6 +12,9 @@ import OneProduct from './components/OneProduct';
 import EditProductForm from './components/EditProductForm';
 
 function App() {
+    
+  const [newProductToggle,setNewProductToggle] = useState(false);
+
   return (
     <BrowserRouter>
     <div className="App container">
@@ -19,9 +22,9 @@ function App() {
       <Switch>
       {/* use exact path to only show the route */}
         <Route exact path="/">
-          <NewProductForm></NewProductForm>
+          <NewProductForm newProductToggle= {newProductToggle} setNewProductToggle= {setNewProductToggle}></NewProductForm>
           <hr />
-          <AllProducts></AllProducts>
+          <AllProducts newProductToggle= {newProductToggle}></AllProducts>
         </Route>
         
         <Route exact path="/ProductManagers/:_id">

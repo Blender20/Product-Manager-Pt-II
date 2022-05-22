@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
-import axios from 'axios';// to talk to the database
 
-const NewProductForm = () => {
+import axios from 'axios';// to talk to the database
+import React, {useState} from 'react';
+
+const NewProductForm = (props) => {
 
 
     let [title, setTitle] = useState("");
@@ -32,7 +33,7 @@ const NewProductForm = () => {
                 
                     setErrors(res.data.error.errors); 
                 }
-                // else means there are no errors, then we can clear out the form
+                // else means there are no errors, and product was successfully created, then we can clear out the form
                 else{
                 //clear out the state variables to clear out the form
                 setTitle("");
@@ -40,6 +41,10 @@ const NewProductForm = () => {
                 setDescription("");
                 // setGradDate("");
                 // setIsVeteran(false);
+                
+                props.setNewProductToggle(!props.newProductToggle);
+                
+                
                 }
                 
             })
